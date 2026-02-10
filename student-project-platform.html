@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Projects - Build Your Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E85A26;
+            --secondary: #004E89;
+            --accent: #FFA400;
+            --bg-main: #FFFEF9;
+            --bg-alt: #F7F4ED;
+            --text-dark: #1A1A1A;
+            --text-medium: #4A4A4A;
+            --text-light: #757575;
+            --success: #06A77D;
+            --border: #E0DDD1;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Archivo', sans-serif;
+            background: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-main);
+            border-bottom: 2px solid var(--border);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 254, 249, 0.95);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-decoration: none;
+            font-family: 'DM Mono', monospace;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-content h1 .highlight {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-medium);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Archivo', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-dark);
+            border: 2px solid var(--text-dark);
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            font-family: 'DM Mono', monospace;
+        }
+
+        .stat-label {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* Use Cases Section */
+        .use-cases {
+            background: var(--bg-alt);
+            padding: 6rem 2rem;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-medium);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .use-case-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .use-case-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .use-case-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        .use-case-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .use-case-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .use-case-problem {
+            font-size: 1rem;
+            color: var(--text-medium);
+            font-style: italic;
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .use-case-outcome {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        .outcome-label {
+            font-weight: 700;
+            color: var(--success);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .feature-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-badge {
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: 'DM Mono', monospace;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .feature-description {
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-medium);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: '→';
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .why-admin {
+            background: var(--bg-alt);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .why-admin-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .why-admin-text {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        /* Project Flow Section */
+        .project-flow {
+            background: var(--secondary);
+            color: white;
+            padding: 6rem 2rem;
+        }
+
+        .flow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .flow-step {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .flow-step:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            font-size: 3rem;
+            font-weight: 900;
+            font-family: 'DM Mono', monospace;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-section .btn {
+            background: white;
+            color: var(--primary);
+            font-size: 1.15rem;
+            padding: 1.25rem 3rem;
+        }
+
+        .cta-section .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 4rem 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: var(--bg-alt);
+            color: var(--text-dark);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--border);
+        }
+
+        .tag.beginner {
+            background: #E8F5E9;
+            color: #2E7D32;
+            border-color: #81C784;
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">CP://</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#use-cases">Use Cases</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#get-started">Get Started</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Want experience but <span class="highlight">don't know where to start?</span></h1>
+            <p>Join student-led projects, build real skills, and create a portfolio that matters—no internship required.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Explore Projects</a>
+                <a href="#" class="btn btn-secondary">Start a Project</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Active Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Students Connected</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Learning Communities</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">Find Opportunities</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="use-cases" class="use-cases">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Built for Real Student Challenges</h2>
+                <p class="section-subtitle">Whether you're just starting out or ready to lead, there's a path for you.</p>
+            </div>
+            <div class="use-case-grid">
+                <div class="use-case-card scroll-animate">
+                    <div class="use-case-icon">🌱</div>
+                    <h3 class="use-case-title">First-Year / MESA Student</h3>
+                    <p class="use-case-problem">"I'm majoring in STEM but I don't know what a project even is."</p>
+                    <div class="use-case-outcome">
+                        <span class="outcome-label">Outcome:</span>
+                        Discover beginner-friendly projects, read peer stories, and join low-stakes collaborations. Build confidence before internships and increase retention through early engagement.
+                    </div>
+                </div>
+
+                <div class="use-case-card scroll-animate">
+                    <div class="use-case-icon">🌍</div>
+                    <h3 class="use-case-title">International / No-Internship Student</h3>
+                    <p class="use-case-problem">"I can't work off campus and I'm being filtered out of internships."</p>
+                    <div class="use-case-outcome">
+                        <span class="outcome-label">Outcome:</span>
+                        Start independent projects, tag your skills, get faculty mentorship, and build portfolio evidence. Gain equity-aligned experiential learning and transfer/employer readiness.
+                    </div>
+                </div>
+
+                <div class="use-case-card scroll-animate">
+                    <div class="use-case-icon">🔄</div>
+                    <h3 class="use-case-title">Club / Learning Community Lead</h3>
+                    <p class="use-case-problem">"Our projects die when leaders graduate."</p>
+                    <div class="use-case-outcome">
+                        <span class="outcome-label">Outcome:</span>
+                        Archive projects so new students can discover and continue them. Maintain institutional memory and create sustainable student leadership that outlasts individual members.
+                    </div>
+                </div>
+
+                <div class="use-case-card scroll-animate">
+                    <div class="use-case-icon">📊</div>
+                    <h3 class="use-case-title">Admin / Faculty</h3>
+                    <p class="use-case-problem">"I know projects are happening, but I can't see them."</p>
+                    <div class="use-case-outcome">
+                        <span class="outcome-label">Outcome:</span>
+                        Browse projects by theme, pull examples for grants and reports, and identify gaps/opportunities. Get strategic visibility and data without extra labor.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Key Features & Components</h2>
+                <p class="section-subtitle">Everything you need to discover, join, and manage student projects</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card scroll-animate">
+                    <div class="feature-header">
+                        <span class="feature-badge">A</span>
+                        <h3 class="feature-title">Student Profiles</h3>
+                    </div>
+                    <p class="feature-description">Showcase your interests, skills, and what you're working on or looking for.</p>
+                    <ul class="feature-list">
+                        <li>Name, major, interests</li>
+                        <li>Classes taken (optional)</li>
+                        <li>Portfolio, GitHub, LinkedIn links</li>
+                        <li>"Looking for / Working on" toggle</li>
+                    </ul>
+                    <div class="why-admin">
+                        <div class="why-admin-title">Why Admin Care</div>
+                        <div class="why-admin-text">Normalizes projects for non-elite students, makes invisible learning visible, and supports equity reporting.</div>
+                    </div>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <div class="feature-header">
+                        <span class="feature-badge">B</span>
+                        <h3 class="feature-title">Project Pages</h3>
+                    </div>
+                    <p class="feature-description">The heart of the platform—each project tells its story in plain language.</p>
+                    <ul class="feature-list">
+                        <li>Plain-language description</li>
+                        <li>Skills used & skills learned</li>
+                        <li>Status: Idea, In Progress, Recruiting, Archived</li>
+                        <li>Learning community tags (MESA, Umoja, Puente)</li>
+                    </ul>
+                    <div class="why-admin">
+                        <div class="why-admin-title">Why Admin Care</div>
+                        <div class="why-admin-text">Solves the continuity/brain drain problem and creates institutional memory without heavy staff lift.</div>
+                    </div>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <div class="feature-header">
+                        <span class="feature-badge">C</span>
+                        <h3 class="feature-title">Discovery & Tagging</h3>
+                    </div>
+                    <p class="feature-description">Find exactly what you're looking for with smart filters and tags.</p>
+                    <ul class="feature-list">
+                        <li>Tags: CS, Engineering, Social Justice, Business, Art</li>
+                        <li>Filters: "Looking for collaborators," "Beginner-friendly"</li>
+                        <li>Optional class filter (CS 1A, etc.)</li>
+                    </ul>
+                    <div class="why-admin">
+                        <div class="why-admin-title">Why Admin Care</div>
+                        <div class="why-admin-text">Aligns with transfer/employer language, encourages interdisciplinary work, and reduces intimidation for first-gen students.</div>
+                    </div>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <div class="feature-header">
+                        <span class="feature-badge">D</span>
+                        <h3 class="feature-title">Join / Start Pathway</h3>
+                    </div>
+                    <p class="feature-description">Lower the activation energy with guided prompts that help you begin.</p>
+                    <ul class="feature-list">
+                        <li>"I don't know where to start"</li>
+                        <li>"I have an idea but no team"</li>
+                        <li>"I want experience but no internship"</li>
+                    </ul>
+                    <div class="why-admin">
+                        <div class="why-admin-title">Why Admin Care</div>
+                        <div class="why-admin-text">Addresses the "I don't belong here" gap and supports international & Dream Act students.</div>
+                    </div>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <div class="feature-header">
+                        <span class="feature-badge">E</span>
+                        <h3 class="feature-title">Continuity & Maintenance</h3>
+                    </div>
+                    <p class="feature-description">Keep projects alive and prevent abandonment with smart auto-checks.</p>
+                    <ul class="feature-list">
+                        <li>"Is this project still active?" ping every 30-60 days</li>
+                        <li>Archive instead of delete</li>
+                        <li>Clear ownership (lead + backup)</li>
+                    </ul>
+                    <div class="why-admin">
+                        <div class="why-admin-title">Why Admin Care</div>
+                        <div class="why-admin-text">Prevents ghost projects, lowers reputational risk, and makes the platform sustainable beyond current students.</div>
+                    </div>
+                </div>
+
+                <div class="feature-card scroll-animate">
+                    <div class="feature-header">
+                        <span class="feature-badge">F</span>
+                        <h3 class="feature-title">Resource Integration</h3>
+                    </div>
+                    <p class="feature-description">Connect to campus programs and increase the ROI of existing resources.</p>
+                    <ul class="feature-list">
+                        <li>ETI, KCI, Innovation Challenge links</li>
+                        <li>Startup Club integration</li>
+                        <li>"Related resources" per project</li>
+                    </ul>
+                    <div class="why-admin">
+                        <div class="why-admin-title">Why Admin Care</div>
+                        <div class="why-admin-text">Increases ROI of existing programs, reduces "too many websites" problem, and shows institutional alignment.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="project-flow">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: white;">How It Works</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Simple steps to get started, whether you're exploring or building</p>
+            </div>
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="step-number">01</div>
+                    <h3 class="step-title">Landing Page</h3>
+                    <p class="step-description">See the big question: "Want experience but don't know where to start?" Choose to explore projects or start your own.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">02</div>
+                    <h3 class="step-title">Project Feed</h3>
+                    <p class="step-description">Browse cards showing project titles, skills, status, and beginner-friendly badges. Filter by interests and availability.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">03</div>
+                    <h3 class="step-title">Project Detail</h3>
+                    <p class="step-description">Learn what the project is, what skills it needs, who it's for, and how to join. See related resources and opportunities.</p>
+                </div>
+                <div class="flow-step">
+                    <div class="step-number">04</div>
+                    <h3 class="step-title">Start a Project</h3>
+                    <p class="step-description">Answer guided prompts: What problem are you curious about? What skills do you want to learn? Do you want a mentor?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="get-started" class="cta-section">
+        <div class="section-container">
+            <h2>Ready to Build Your Future?</h2>
+            <p>Join hundreds of students creating real-world experience on campus</p>
+            <a href="#" class="btn">Get Started Today</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Campus Projects</h3>
+                <p>Connecting students with meaningful project experiences. Build skills, create community, and make your mark—all without leaving campus.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Features</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Student Profiles</a></li>
+                    <li><a href="#">Project Discovery</a></li>
+                    <li><a href="#">Resource Hub</a></li>
+                    <li><a href="#">Community Forums</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Getting Started</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Report Issue</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul class="footer-links">
+                    <li><a href="#">MESA</a></li>
+                    <li><a href="#">Umoja</a></li>
+                    <li><a href="#">Puente</a></li>
+                    <li><a href="#">Innovation Hub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Campus Projects Platform. Built by students, for students.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
